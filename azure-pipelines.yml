@@ -242,7 +242,7 @@ stages:
       displayName: Create Or Update Resource Group
       enabled: 'false'
       inputs:
-        azureSubscription: $(AzureSubscription)
+        azureSubscription: 'Microsoft Azure #6 (0cb12691-4f8e-4a66-abab-4481e2f0517e)'
         action: 'Create Or Update Resource Group'
         resourceGroupName: '$(ResourceGroupName)'
         location: 'West Europe'
@@ -269,7 +269,7 @@ stages:
       displayName: Deploy Web App to Azure App Service
       enabled: 'true'
       inputs:
-        azureSubscription: $(AzureSubscription)
+        azureSubscription: 'Microsoft Azure #6 (0cb12691-4f8e-4a66-abab-4481e2f0517e)'
         appType: 'webApp'
         WebAppName: '$(WebAppName)'
         TakeAppOfflineFlag: true
@@ -290,7 +290,7 @@ stages:
     - task: SqlAzureDacpacDeployment@1
       displayName: Azure SQL Publish DacPac to SQL Azure
       inputs:
-        azureSubscription: $(AzureSubscription)
+        azureSubscription: 'Microsoft Azure #6 (0cb12691-4f8e-4a66-abab-4481e2f0517e)'
         ServerName: '$(SqlServerName).database.windows.net,1433'
         DatabaseName: '$(Database.Name)'
         SqlUsername: '$(Database.Admin)'
