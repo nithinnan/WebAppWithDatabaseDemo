@@ -202,14 +202,14 @@ stages:
         provider: 'azurerm'
         command: 'plan'
         workingDirectory: 'terraform'
-        environmentServiceNameAzureRM: $(AzureSubscription)
+        environmentServiceNameAzureRM: 'Microsoft Azure #6 (0cb12691-4f8e-4a66-abab-4481e2f0517e)'
 
     - task: TerraformTaskV1@0
       inputs:
         provider: 'azurerm'
         command: 'apply'
         workingDirectory: 'terraform'
-        environmentServiceNameAzureRM: $(AzureSubscription)
+        environmentServiceNameAzureRM: 'Microsoft Azure #6 (0cb12691-4f8e-4a66-abab-4481e2f0517e)'
 
 
     # - task: Terraform@2
