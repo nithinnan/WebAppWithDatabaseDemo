@@ -185,7 +185,7 @@ stages:
         provider: 'azurerm'
         command: 'init'
         workingDirectory: 'terraform'
-        backendServiceArm: $(AzureSubscription)
+        backendServiceArm: 'Microsoft Azure #6 (0cb12691-4f8e-4a66-abab-4481e2f0517e)'
         backendAzureRmResourceGroupName: 'SIA-ResourceGroup-Nithin-RG4'
         backendAzureRmStorageAccountName: 'sianithinstorage1'
         backendAzureRmContainerName: 'tfstate'
