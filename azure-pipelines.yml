@@ -186,35 +186,52 @@ stages:
         artifactName: terraform
         downloadPath: $(System.DefaultWorkingDirectory)
 
-    - task: Terraform@2
+    - task: TerraformInstaller@0
       inputs:
-        TemplatePath: '$(System.DefaultWorkingDirectory)/terraform/'
-        Arguments: 'init'
-        InstallTerraform: true
-        UseAzureSub: true
-        ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
-        ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (5a56fb34-f1c5-4669-9412-4592bb81a2cf)'
-        ManageState: false
+        terraformVersion: '0.12.26'
+    - task: TerraformTaskV1@0
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        workingDirectory: 'terraform'
+        backendServiceArm: 'Microsoft Azure #6 (0cb12691-4f8e-4a66-abab-4481e2f0517e)'
+        backendAzureRmResourceGroupName: 'SIA-ResourceGroup-Nithin-RG4'
+        backendAzureRmStorageAccountName: 'sianithinstorage1'
+        backendAzureRmContainerName: 'tfstate'
+        backendAzureRmKey: 'tfstate'
 
-    - task: Terraform@2
+    - task: TerraformTaskV1@0
       inputs:
-        TemplatePath: '$(System.DefaultWorkingDirectory)/terraform/'
-        Arguments: 'plan'
-        InstallTerraform: true
-        UseAzureSub: true
-        ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
-        ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (5a56fb34-f1c5-4669-9412-4592bb81a2cf)'
-        ManageState: false
+        provider: 'azurerm'
+        command: 'validate'
+        workingDirectory: 'terraform'
 
-    - task: Terraform@2
+    - task: TerraformTaskV1@0
       inputs:
-        TemplatePath: '$(System.DefaultWorkingDirectory)/terraform/'
-        Arguments: 'apply'
-        InstallTerraform: true
-        UseAzureSub: true
-        ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
-        ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (5a56fb34-f1c5-4669-9412-4592bb81a2cf)'
-        ManageState: false
+        provider: 'azurerm'
+        command: 'plan'
+        workingDirectory: 'terraform'
+        environmentServiceNameAzureRM: 'Microsoft Azure #6 (0cb12691-4f8e-4a66-abab-4481e2f0517e)'
+
+    - task: TerraformTaskV1@0
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
+        workingDirectory: 'terraform'
+        environmentServiceNameAzureRM: 'Microsoft Azure #6 (0cb12691-4f8e-4a66-abab-4481e2f0517e)'
+
+
+    # - task: Terraform@2
+    #   inputs:
+    #     TemplatePath: '$(System.DefaultWorkingDirectory)/terraform/'
+    #     Arguments: 'init'
+    #     InstallTerraform: true
+    #     UseAzureSub: true
+    #     ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
+    #     ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (5a56fb34-f1c5-4669-9412-4592bb81a2cf)'
+    #     ManageState: false
+
+
 
     - task: AzureResourceGroupDeployment@2
       displayName: Validate ARM template
