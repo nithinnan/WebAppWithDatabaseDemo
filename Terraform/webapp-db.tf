@@ -48,7 +48,7 @@ resource "azurerm_app_service" "app-service" {
 }
 
 resource "azurerm_sql_server" "sqldb" {
-  name                         = "terraform-sqlserver"
+  name                         = "terraform-sqlserver-sia"
   resource_group_name          = azurerm_resource_group.rg.name
   location                     = azurerm_resource_group.rg.location
   version                      = "12.0"
