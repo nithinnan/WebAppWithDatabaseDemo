@@ -52,8 +52,7 @@ stages:
            $doc.Save($path)
        }
       workingDirectory: WebApp
-      displayName: 'PS : Add Project GUID'anization: houssemdellai
-        pro
+   
 
 
     - task: DotNetCoreCLI@2
